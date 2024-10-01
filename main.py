@@ -1,11 +1,11 @@
+from multiprocessing import Queue
+
+from filters.bnw import BnWFilter
+from filters.dummy import DummyFilter
+from filters.mirror import MirrorFilter
+from filters.resize import ResizeFilter
 from sink import DisplaySink
 from source import WebcamSource
-from filters.dummy import DummyFilter
-from filters.resize import ResizeFilter
-from filters.mirror import MirrorFilter
-from filters.bnw import BnWFilter
-
-from multiprocessing import Queue
 
 dummyInput = Queue()
 resizeInput = Queue()

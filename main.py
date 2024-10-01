@@ -29,8 +29,9 @@ if __name__ == '__main__':
     sink.start()
 
     sink.join()
-    bnw.join()
-    mirror.join()
-    resize.join()
-    dummy.join()
-    src.join()
+
+    src.kill()
+    dummy.kill()
+    resize.kill()
+    mirror.kill()
+    bnw.kill()

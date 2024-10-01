@@ -1,8 +1,8 @@
 from multiprocessing import Process, Queue
 from typing import List
 
-
 import cv2
+
 
 class WebcamSource(Process):
     def __init__(self, outputs: List[Queue]) -> None:

@@ -1,6 +1,7 @@
-from multiprocessing import Process, Queue
 from abc import ABC, abstractmethod
+from multiprocessing import Process, Queue
 from typing import List
+
 
 class BaseFilter(Process, ABC):
     def __init__(self, input: Queue, outputs: List[Queue]):

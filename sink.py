@@ -1,6 +1,5 @@
 from multiprocessing import Process, Queue
 
-
 import cv2
 
 

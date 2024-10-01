@@ -6,11 +6,12 @@ from sink import DisplaySink
 from source import WebcamSource
 
 dummyInput = Queue()
+bnwInput = Queue()
 sinkInput = Queue()
 
 src = WebcamSource(outputs=[dummyInput])
-dummy = DummyFilter(input=dummyInput, outputs=[sinkInput])
-bnw = BnWFilter(input=dummyInput, outputs=[sinkInput])
+dummy = DummyFilter(input=dummyInput, outputs=[bnwInput])
+bnw = BnWFilter(input=bnwInput, outputs=[sinkInput])
 sink = DisplaySink(input=sinkInput)
 
 if __name__ == '__main__':

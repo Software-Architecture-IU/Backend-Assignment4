@@ -21,7 +21,13 @@ class WebcamSource(Process):
                 break
             for idx in range(len(self.outputs)):
                 self.outputs[idx].put(frame)
+
+            cv2.putText(frame, 'Press Q to Quit', (10, 30), cv2.QT_FONT_NORMAL, 0.95, (255, 255, 255), 3, cv2.LINE_AA)
+            cv2.imshow('Original Frame', frame)
+
             if cv2.waitKey(1) & 0xFF == ord('q'):
+                for idx in range(len(self.outputs)):
+                    self.outputs[idx].put(None)
                 break
 
         cap.release()

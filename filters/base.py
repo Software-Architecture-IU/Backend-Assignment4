@@ -12,9 +12,13 @@ class BaseFilter(Process, ABC):
     def run(self):
         while True:
             frame = self.input.get()
-            processed = self.process(frame)
+            processed = None
+            if frame is not None:
+                processed = self.process(frame)
             for idx in range(len(self.outputs)):
                 self.outputs[idx].put(processed)
+            if frame is None:
+                break
 
     @abstractmethod
     def process(self, frame):

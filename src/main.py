@@ -23,20 +23,13 @@ bnw = BnWFilter(input=bnwInput, outputs=[distortionInput])
 distort = DistortionFilter(input=distortionInput, outputs=[sinkInput], k1=-0.2, k2=0.5)
 sink = DisplaySink(input=sinkInput)
 
+processes = (src, dummy, resize, mirror, bnw, distort, sink)
+
 if __name__ == '__main__':
-    src.start()
-    dummy.start()
-    resize.start()
-    mirror.start()
-    bnw.start()
-    distort.start()
-    sink.start()
+    for process in processes:
+        process.start()
 
     sink.join()
 
-    distort.kill()
-    src.kill()
-    dummy.kill()
-    resize.kill()
-    mirror.kill()
-    bnw.kill()
+    for process in processes:
+        process.kill()

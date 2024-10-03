@@ -1,10 +1,10 @@
-from filters.base import BaseFilter
+from multiprocessing import Queue
+from typing import List
 
 import cv2
 import numpy as np
 
-from typing import List
-from multiprocessing import Queue
+from src.filters.base import BaseFilter
 
 
 class DistortionFilter(BaseFilter):

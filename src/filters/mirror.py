@@ -1,6 +1,6 @@
 import cv2
 
-from filters.base import BaseFilter
+from src.filters.base import BaseFilter
 
 
 class MirrorFilter(BaseFilter):

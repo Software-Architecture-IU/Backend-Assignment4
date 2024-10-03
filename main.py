@@ -2,7 +2,6 @@ from multiprocessing import Queue
 
 from filters.bnw import BnWFilter
 from filters.distortion import DistortionFilter
-from filters.dummy import DummyFilter
 from filters.mirror import MirrorFilter
 from filters.resize import ResizeFilter
 from sink import DisplaySink
@@ -16,7 +15,6 @@ distortionInput = Queue()
 sinkInput = Queue()
 
 src = WebcamSource(outputs=[resizeInput])
-dummy = DummyFilter(input=dummyInput, outputs=[resizeInput])
 resize = ResizeFilter(input=resizeInput, outputs=[mirrorInput], sizes=(400, 400))
 mirror = MirrorFilter(input=mirrorInput, outputs=[bnwInput])
 bnw = BnWFilter(input=bnwInput, outputs=[distortionInput])
@@ -25,7 +23,6 @@ sink = DisplaySink(input=sinkInput)
 
 if __name__ == '__main__':
     src.start()
-    dummy.start()
     resize.start()
     mirror.start()
     bnw.start()
@@ -36,7 +33,6 @@ if __name__ == '__main__':
 
     distort.kill()
     src.kill()
-    dummy.kill()
     resize.kill()
     mirror.kill()
     bnw.kill()
